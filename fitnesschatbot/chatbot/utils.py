@@ -51,3 +51,13 @@ def chatbot_initialization(system_message, user_message, output_payload):
     structured_response = parser.parse(response_content)
 
     return structured_response
+
+
+
+# utils.py or similar utility file
+def construct_user_message(payload):
+    return (
+        f"Weight: {payload.weight} kg, Height: {payload.height} inches, Days of workout: {payload.days_workout}, "
+        f"Gender: {payload.gender}, Fitness goal: {payload.fitness_goal}, Meals: {payload.meals}, Budget Plan: {payload.budget_friendly}"
+    )
+

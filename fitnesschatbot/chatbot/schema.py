@@ -2,13 +2,14 @@
 from pydantic import BaseModel
 from typing import List, Dict
 
-class DietPlanRequest(BaseModel):
+class PlanRequest(BaseModel):
     """Schema for the diet plan request."""
     weight: float
     height: float  
     days_workout: int  
     gender: str
     fitness_goal: str
+    budget_friendly: bool
     meals: int  # Change from str to int if it represents the number of meals
 
 
@@ -26,6 +27,19 @@ class DailyDietPlan(BaseModel):
 class DietPlanResponse(BaseModel):
     """Schema for the diet plan response."""
     diet_plan: List[DailyDietPlan]  # A list containing the diet plan for each day of the week
-    
+
+
+class Exercise(BaseModel):
+    name: str
+    sets: int
+    reps: int
+
+class DayWorkout(BaseModel):
+    day: str
+    type: str
+    exercises: List[Exercise]
+
+class WorkoutPlanResponse(BaseModel):
+    workoutPlan: List[DayWorkout]
     
 
